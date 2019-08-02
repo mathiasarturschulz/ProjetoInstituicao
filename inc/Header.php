@@ -14,7 +14,6 @@
 
 <?php
 require_once "autoload.php";
-include('verifica_login.php');
 ?>
 
 <body>

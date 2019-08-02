@@ -42,7 +42,7 @@ class InstituicaoDAO {
             $sql = ""
                 . "UPDATE instituicao "
                 . "    SET nome = :nome "
-                . "WHERE id = :id; ";
+                . "WHERE idInstituicao = :id; ";
             $pdo = Conexao::startConnection();
             $stmt = $pdo->prepare($sql);
             
@@ -62,7 +62,7 @@ class InstituicaoDAO {
     {
         try {
             $sql = ""
-                . "DELETE FROM caminhao WHERE id = :id";
+                . "DELETE FROM instituicao WHERE idInstituicao = :id";
             $pdo = Conexao::startConnection();
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':id', $id);
@@ -77,7 +77,7 @@ class InstituicaoDAO {
     public function selectUltimaInstituicao()
     {
         try {
-            $sql = "select max(id) as ultima from instituicao;";
+            $sql = "select max(idInstituicao) as ultima from instituicao;";
             $pdo = Conexao::startConnection();
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
@@ -121,7 +121,7 @@ class InstituicaoDAO {
                 $result = [];
                 while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $result[] = (new Instituicao())
-                            ->setId($linha['id'])
+                            ->setId($linha['idInstituicao'])
                             ->setNome($linha['nome']);
                 }
                 return [true, $result];
@@ -142,7 +142,7 @@ class InstituicaoDAO {
             $result = [];
             while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $result[] = (new Instituicao())
-                        ->setId($linha['id'])
+                        ->setId($linha['idInstituicao'])
                         ->setNome($linha['nome']);
             }
             return [true, $result];
