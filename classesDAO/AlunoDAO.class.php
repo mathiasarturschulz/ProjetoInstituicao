@@ -37,7 +37,7 @@ class AlunoDAO {
             $nome = $Aluno->getNome();
             $score = $Aluno->getScore();
             $posicao = $Aluno->getPosicao();
-            $desde = $Aluno->getDesde();
+            $desde = $Aluno->getDesde()->format('Y-m-d');
             $resolvidos = $Aluno->getResolvidos();
             $tentados = $Aluno->getTentados();
             $submissoes = $Aluno->getSubmissoes();
@@ -84,7 +84,7 @@ class AlunoDAO {
             $nome = $Aluno->getNome();
             $score = $Aluno->getScore();
             $posicao = $Aluno->getPosicao();
-            $desde = $Aluno->getDesde();
+            $desde = $Aluno->getDesde()->format('Y-m-d');
             $resolvidos = $Aluno->getResolvidos();
             $tentados = $Aluno->getTentados();
             $submissoes = $Aluno->getSubmissoes();

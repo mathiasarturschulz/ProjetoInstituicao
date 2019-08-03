@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Aluno (
 	nome VARCHAR(45) NOT NULL,
 	score DOUBLE NOT NULL,
 	posicao INT NULL,
-	desde DATE NULL,
+	desde DATETIME NULL,
 	resolvidos INT NULL,
 	tentados INT NULL,
 	submissoes INT NULL,
@@ -36,5 +36,8 @@ CREATE TABLE IF NOT EXISTS TurmaAluno (
 	CONSTRAINT fk_Turma_has_Aluno_Aluno1 FOREIGN KEY (idAluno) REFERENCES Aluno(idAluno)
 );
 
-use instituicao;
 select * from instituicao;
+select * from aluno;
+
+
+
