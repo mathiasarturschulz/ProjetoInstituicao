@@ -65,8 +65,10 @@ class InstituicaoDAO {
                 . "DELETE FROM instituicao WHERE idInstituicao = :id";
             $pdo = Conexao::startConnection();
             $stmt = $pdo->prepare($sql);
+
             $stmt->bindParam(':id', $id);
             $id = $idInstituicao;
+            
             $stmt->execute();
             return [true, "Deletado com Sucesso"];
         } catch (PDOException $e) {
