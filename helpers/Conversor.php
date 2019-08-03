@@ -21,7 +21,7 @@ class Conversor{
      */
     private static function getConteudoHTML($usuarioId){
 
-        $url = self::URL . $usuarioId;
+        $url = self::getURLCompleta($usuarioId);
 
         if(self::isURLValida($url) == 1){
             $html = file_get_contents(self::URL . $usuarioId);
@@ -35,7 +35,7 @@ class Conversor{
      * Verifica se a URL informada não irá retornar o código 500 (Internal Server Error) ou
      * 404 (URL não encontrada)
      */
-    public static function isURLValida($url){
+    private static function isURLValida($url){
         $cabecalho = @get_headers($url);
         $existe = strpos($cabecalho[0],'500') || strpos($cabecalho[0],'404')  === false ? 1 : 0;
         return $existe;
@@ -86,7 +86,7 @@ class Conversor{
                     'tentados' => $usuarioTentados, 
                     'submetidos' => $usuarioSubmetidos
             ];
-            
+
         }else{
             return 0;
         }
