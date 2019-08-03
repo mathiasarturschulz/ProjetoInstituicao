@@ -50,6 +50,27 @@
     // echo $oAlunoDAO->delete($oAluno->getId())[1];
 
 
+    // TURMA
+    $oTurmaDAO = new TurmaDAO();
+
+    // $oAluno1 = (new Aluno())->setId(3);
+    // $oAluno2 = (new Aluno())->setId(4);
+    // $oTurma = (new Turma())
+    //     ->setNome('Algoritmos')
+    //     ->setListaAlunos([$oAluno1, $oAluno2]);
+    // echo $oTurmaDAO->insert($oTurma)[1];
+
+    // $oAluno1 = (new Aluno())->setId(3);
+    // $oTurma = (new Turma())
+    //     ->setId(1)
+    //     ->setNome('Programação')
+    //     ->setListaAlunos([$oAluno1]);
+    // echo $oTurmaDAO->update($oTurma)[1];
+
+    // $oTurma = (new Turma())
+    //     ->setId(1);
+    // echo $oTurmaDAO->delete($oTurma->getId())[1];
+
 
 
     require_once "inc/Footer.php";

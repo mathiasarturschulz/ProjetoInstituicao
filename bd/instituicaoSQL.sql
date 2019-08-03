@@ -36,8 +36,10 @@ CREATE TABLE IF NOT EXISTS TurmaAluno (
 	CONSTRAINT fk_Turma_has_Aluno_Aluno1 FOREIGN KEY (idAluno) REFERENCES Aluno(idAluno)
 );
 
-select * from instituicao;
-select * from aluno;
+-- select * from instituicao;
+-- select * from aluno;
+-- select * from turma;
+-- select * from turmaaluno;
 
 
 

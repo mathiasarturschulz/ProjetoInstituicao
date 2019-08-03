@@ -42,7 +42,7 @@ class TurmaDAO {
         try {
             $aResult = [];
             foreach ($aAlunos as $oAluno) {
-                $aResult[] = $this->insertTurmaAluno($iIdTurma, $oAluno);
+                $aResult = $this->insertTurmaAluno($iIdTurma, $oAluno);
                 if (!$aResult[0])
                     return [false, 'Error: ' . $aResult[1]];
             }
@@ -64,7 +64,7 @@ class TurmaDAO {
             $stmt->bindParam(':idTurma', $idTurma, PDO::PARAM_STR);
             $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_STR);
             $idTurma = $iIdTurma;
-            $idAluno = $oAluno->getID();
+            $idAluno = $oAluno->getId();
 
             $stmt->execute();
             if ($stmt->rowCount())
