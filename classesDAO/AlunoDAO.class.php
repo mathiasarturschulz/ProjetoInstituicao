@@ -60,10 +60,10 @@ class AlunoDAO {
                 . "    nome = :nome, "
                 . "    score = :score, "
                 . "    posicao = :posicao, "
-                . "    desde = :desde "
-                . "    resolvidos = :resolvidos "
-                . "    tentados = :tentados "
-                . "    submissoes = :submissoes "
+                . "    desde = :desde, "
+                . "    resolvidos = :resolvidos, "
+                . "    tentados = :tentados, "
+                . "    submissoes = :submissoes, "
                 . "    idInstituicao = :idInstituicao "
                 . "WHERE idAluno = :id; ";
             $pdo = Conexao::startConnection();
@@ -168,7 +168,7 @@ class AlunoDAO {
                     $oInstituicao = $oInstituicaoDAO->select('id', InstituicaoDAO::TIPO_NUMERO, $linha['idInstituicao'])[1][0];
     
                     $result[] = (new Aluno())
-                        ->setID($linha['id'])
+                        ->setID($linha['idAluno'])
                         ->setCodigo($linha['codigo'])
                         ->setNome($linha['nome'])
                         ->setScore($linha['score'])
