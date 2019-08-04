@@ -3,7 +3,7 @@
 ?>
 
 <?php
-/*
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // POST
     $id = isset($_POST['id']) ? $_POST['id'] : "";
@@ -55,18 +55,20 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id != "") {
         echo "<p class=\"bg-danger\">" . $aResult[1] . "</p>";
     }
 }
+
 // DELETE
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
-    $oCaminhaoDAO = new CaminhaoDAO();
-    $aResult = $oCaminhaoDAO->delete($id);
+    echo "deletar...";
+    // $oCaminhaoDAO = new CaminhaoDAO();
+    // $aResult = $oCaminhaoDAO->delete($id);
     
-    if ($aResult[0]) {
-        echo "<p class=\"bg-success\">" . $aResult[1] . "</p>";
-        $id = $marca = $modelo = $nomeMotorista = null;
-    } else {
-        echo "<p class=\"bg-danger\">" . $aResult[1] . "</p>";
-    }
-}*/
+    // if ($aResult[0]) {
+    //     echo "<p class=\"bg-success\">" . $aResult[1] . "</p>";
+    //     $id = $marca = $modelo = $nomeMotorista = null;
+    // } else {
+    //     echo "<p class=\"bg-danger\">" . $aResult[1] . "</p>";
+    // }
+}
 ?>
 
 
@@ -90,10 +92,15 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
                     ?><tr>
                             <td id='tabela_id'><?php echo $oTurma->getId(); ?></td>
                             <td><?php echo utf8_encode($oTurma->getNome()); ?></td>
-                            <td id='tabela_acoes'><center>
-                                <a href="?act=upd&id=<?php echo $oTurma->getId(); ?>" class="btn btn-sm btn-warning"><i class='fa fa-pencil'></i> Editar</a>
-                                <a href="?act=del&id=<?php echo $oTurma->getId(); ?>" class="btn btn-sm btn-danger" ><i class='fa fa-trash'></i> Excluir</a>
-                            </center></td>
+                            <td id='tabela_acoes'>
+                                <div class="form-row">
+                                    <a href="?act=upd&id=<?php echo $oTurma->getId(); ?>" id="btn-editar" class="btn btn-sm btn-warning"><i class='fa fa-pencil'></i> Editar</a>
+                                    <form action="excluir.php" method="post">
+                                        <input type="hidden" name="id" value="<?= $oTurma->getId() ?>">
+                                        <button class="btn btn-sm btn-danger"><i class='fa fa-trash'></i> Excluir</button>
+                                    </form>
+                                </div>
+                            </td>
                     </tr><?php
                 }
             } else {
