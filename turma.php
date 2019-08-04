@@ -2,77 +2,13 @@
     require_once "inc/Header.php";
 ?>
 
-<?php
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // POST
-    $id = isset($_POST['id']) ? $_POST['id'] : "";
-    $modelo = isset($_POST['modelo']) ? $_POST['modelo'] : "";
-    $marca = isset($_POST['marca']) ? $_POST['marca'] : "";
-    $nomeMotorista = isset($_POST['nomeMotorista']) ? $_POST['nomeMotorista'] : "";
-} elseif (!isset($id)) {
-    // GET
-    $id = (isset($_GET["id"]) && $_GET["id"] != null) ? $_GET["id"] : "";
-}
-// CREATE OU UPDATE
-if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "save") {
-    $oCaminhaoDAO = new CaminhaoDAO();
-    if (!$id) {
-        // INSERIR
-        $oCaminhao = (new Caminhao())
-            ->setMarca($marca)
-            ->setModelo($modelo)
-            ->setNomeMotorista($nomeMotorista);
-        $aResult = $oCaminhaoDAO->insert($oCaminhao);   
-    } else {
-        // UPDATE
-        $oCaminhao = (new Caminhao())
-            ->setID($id)
-            ->setMarca($marca)
-            ->setModelo($modelo)
-            ->setNomeMotorista($nomeMotorista);
-        $aResult = $oCaminhaoDAO->update($oCaminhao);   
-    }
-    if ($aResult[0]) {
-        echo "<p class=\"bg-success\">" . $aResult[1] . "</p>";
-        $id = $marca = $modelo = $nomeMotorista = null;
-    } else {
-        echo "<p class=\"bg-danger\">" . $aResult[1] . "</p>";
-    }
-}
-// SETA OS VALORES NO FORMULÁRIO - UTILIZADO PARA UPDATE
-if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id != "") {
-    $oCaminhaoDAO = new CaminhaoDAO();
-    $aResult = $oCaminhaoDAO->select('id', CaminhaoDAO::TIPO_NUMERO, $id, CaminhaoDAO::OPERADOR_IGUAL);
-    
-    if ($aResult[0]) {
-        $oCaminhao = $aResult[1][0];
-        $id = $oCaminhao->getID();
-        $marca = $oCaminhao->getMarca();
-        $modelo = $oCaminhao->getModelo();
-        $nomeMotorista = $oCaminhao->getNomeMotorista();
-    } else {
-        echo "<p class=\"bg-danger\">" . $aResult[1] . "</p>";
-    }
-}
-
-// DELETE
-if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
-    echo "deletar...";
-    // $oCaminhaoDAO = new CaminhaoDAO();
-    // $aResult = $oCaminhaoDAO->delete($id);
-    
-    // if ($aResult[0]) {
-    //     echo "<p class=\"bg-success\">" . $aResult[1] . "</p>";
-    //     $id = $marca = $modelo = $nomeMotorista = null;
-    // } else {
-    //     echo "<p class=\"bg-danger\">" . $aResult[1] . "</p>";
-    // }
-}
-?>
-
-
-<h2 class="col-sm-6">&nbspTurmas Cadastradas</h2><br>
+<br>
+<div class="form-row">
+    <h2 class="col-sm-10">&nbspTurmas Cadastradas</h2><br>
+    <form action="cadastro.php" method="post" style="margin-top: 30px; margin-bottom: 5px;">
+        <button class="btn btn-sm btn-primary"><i class='fa fa-plus-circle'></i> Adicionar</button>
+    </form>
+</div>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -94,7 +30,10 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
                             <td><?php echo utf8_encode($oTurma->getNome()); ?></td>
                             <td id='tabela_acoes'>
                                 <div class="form-row">
-                                    <a href="?act=upd&id=<?php echo $oTurma->getId(); ?>" id="btn-editar" class="btn btn-sm btn-warning"><i class='fa fa-pencil'></i> Editar</a>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="id" value="<?= $oTurma->getId() ?>">
+                                        <button id="btn-editar" class="btn btn-sm btn-warning"><i class='fa fa-pencil'></i> Editar</button>
+                                    </form>
                                     <form action="excluir.php" method="post">
                                         <input type="hidden" name="id" value="<?= $oTurma->getId() ?>">
                                         <button class="btn btn-sm btn-danger"><i class='fa fa-trash'></i> Excluir</button>
