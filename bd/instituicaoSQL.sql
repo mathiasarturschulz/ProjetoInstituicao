@@ -41,5 +41,10 @@ CREATE TABLE IF NOT EXISTS TurmaAluno (
 -- select * from turma;
 -- select * from turmaaluno;
 
+insert into turma values
+(null, 'Redes de Computadores'),
+(null, 'Inteligência Artificial'),
+(null, 'Deselvolvimento WEB II');
+
 
 

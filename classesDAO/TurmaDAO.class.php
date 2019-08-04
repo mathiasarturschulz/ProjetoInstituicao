@@ -220,7 +220,10 @@ class TurmaDAO {
         }
     }
 
-    //selectAlunos
+    // public function selectAlunos($sIdTurma)
+    // {
+        
+    // }
 
     public function selectAll()
     {
@@ -237,6 +240,30 @@ class TurmaDAO {
                     ->setId($linha['idTurma'])
                     ->setNome($linha['nome'])
                     ->setListaAlunos($aAlunos)
+                ;
+            }
+            return [true, $result];
+        } catch(PDOException $e) {
+            return [false, 'Error: ' . $e->getMessage()];
+        }
+    }
+
+    /**
+     * Método utilizado para listar as turma sem carregar a lista de alunos das turmas
+     */
+    public function selectAllSemAlunos()
+    {
+        try {
+            $sql = "SELECT * FROM turma";
+            $pdo = Conexao::startConnection();
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $result = [];
+            while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $result[] = (new Turma())
+                    ->setId($linha['idTurma'])
+                    ->setNome($linha['nome'])
+                    ->setListaAlunos([])
                 ;
             }
             return [true, $result];
