@@ -4,6 +4,8 @@
 
 <?php
 
+$table = "";
+
 // VISUALIZAR INFORMAÇÕES DE UM ALUNO
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codigo'])) {
     require_once('helpers/Conversor.php');
