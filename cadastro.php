@@ -4,7 +4,7 @@
 
 <?php
 
-$aListaAlunos = [];
+$oAluno = null;
 
 // VISUALIZAR INFORMAÇÕES DE UM ALUNO
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codigo'])) {
@@ -23,12 +23,11 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codi
             ->setTentados($aData['tentados'])
             ->setSubmissoes($aData['submetidos'])
             ->setInstituicao($aData['instituicao']);
-        $aListaAlunos[] = $oAluno;
 
         $table = ""
             . "<tr><td>Nome</td><td>{$oAluno->getNome()}</td></tr>"
-            . "<tr><td>Score</td><td>{$oAluno->getScore()}</td></tr>"
-            . "<tr><td>Posicao</td><td>{$oAluno->getPosicao()}</td></tr>"
+            . "<tr><td>Score</td><td name=\"score\">{$oAluno->getScore()}</td></tr>"
+            . "<tr><td>Posicao</td><td name=\"posicao\" value='teste123123'>{$oAluno->getPosicao()}</td></tr>"
             . "<tr><td>Desde</td><td>{$oAluno->getDesde()->format('d-m-Y')}</td></tr>"
             . "<tr><td>Resolvidos</td><td>{$oAluno->getResolvidos()}</td></tr>"
             . "<tr><td>Tentados</td><td>{$oAluno->getTentados()}</td></tr>"
@@ -41,6 +40,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codi
 ?>
 
 <div class="container">
+    <input type="text" name="nome" id="" readonly>
     <h2>&nbspCadastro de Turma</h2><br>
 
     <form action="?act=info" method="POST" class="form-horizontal">
@@ -55,64 +55,25 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codi
     </form>
 
     <div style="width: 50%;">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Dados do Aluno</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?= isset($table) ? $table : "" ?>
-            </tbody>
-        </table>
-        <div class="pull-right">
-            <button type="submit" class="btn btn-sm btn-primary" style="height: 35px; margin-top: 33px;"><i class='fa fa-plus-circle'></i> Adicionar</button>
-        </div>
+        <form action="cadastro_aluno.php" method="post">
+            <input type="hidden" name="teste" value="<?= 1 ?>">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th name="dados">Dados do Aluno</th>
+                        <th name="dados2" value="22"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?= isset($table) ? $table : "" ?>
+                </tbody>
+            </table>
+            <div class="pull-right">
+                <input type="hidden" name="id" value="<?= 1 ?>">
+                <button type="submit" class="btn btn-sm btn-primary" style="height: 35px; margin-top: 33px;"><i class='fa fa-plus-circle'></i> Adicionar</button>
+            </div>
+        </form>
     </div>
-    
-
-
-    <h5 style="margin-top: 100px;">&nbspLista de Alunos</h5>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                // CRIAÇÃO DA TABELA
-                $oTurmaDAO = new TurmaDAO();
-                $aResult = $oTurmaDAO->selectAllSemAlunos();
-                
-                if ($aResult[0]) {
-                    foreach ($aResult[1] as $chave => $oTurma) {
-                        ?><tr>
-                                <td id='tabela_id'><?php echo $oTurma->getId(); ?></td>
-                                <td><?php echo utf8_encode($oTurma->getNome()); ?></td>
-                                <td id='tabela_acoes'>
-                                    <div class="form-row">
-                                        <form action="" method="post">
-                                            <input type="hidden" name="id" value="<?= $oTurma->getId() ?>">
-                                            <button id="btn-editar" class="btn btn-sm btn-warning"><i class='fa fa-pencil'></i> Editar</button>
-                                        </form>
-                                        <form action="excluir.php" method="post">
-                                            <input type="hidden" name="id" value="<?= $oTurma->getId() ?>">
-                                            <button class="btn btn-sm btn-danger"><i class='fa fa-trash'></i> Excluir</button>
-                                        </form>
-                                    </div>
-                                </td>
-                        </tr><?php
-                    }
-                } else {
-                    echo "<p class=\"bg-danger\">" . $aResult[1] . "</p>";
-                }
-            ?>
-        </tbody>
-    </table>
 </div>
 
 <?php
