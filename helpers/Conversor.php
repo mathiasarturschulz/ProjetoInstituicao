@@ -1,5 +1,7 @@
 <?php
 
+require_once('OperacaoData.php');   
+
 /**
  * Classe que contém métodos para converter dados de uma página HTML específica para JSON.
  * Página -> https://www.urionlinejudge.com.br/judge/en/profile/{usuarioId}
@@ -73,10 +75,13 @@ class Conversor{
             $usuarioSubmetidos      = preg_replace($padrao, "", $divProfileBarArrayEl[7]->childNodes[15]->childNodes[2]->nodeValue);
     
             $usuarioPosicao = substr($usuarioPosicao, 0, -2);
-    
+
+            $usuarioDesde = OperacaoData::converterDataUSAtoBR($usuarioDesde);
+
             return 
     
-            [   
+            [ 
+                    'codigo' => $usuarioId,
                     'nome' => $usuarioNome, 
                     'posicao' => $usuarioPosicao, 
                     'instituicao' => $usuarioInstituicao, 
@@ -100,7 +105,7 @@ class Conversor{
 
         $arr = self::getDadosAlunoArrayComOID($usuarioId);
 
-        if($arr){
+        if($arr != 0){
             return 
             json_encode(
                 $arr,
