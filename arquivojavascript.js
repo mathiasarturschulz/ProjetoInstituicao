@@ -28,6 +28,10 @@ if(ajax.readyState == 4) {
 if(ajax.status == 200) { 
 document.getElementById("resultado").value = ajax.responseText; 
 var xx = ajax.responseText; 
+
+table_body = document.getElementById("table_body"); 
+table_body.innerHTML=xx;
+
 alert("RESULTADO DA CHAMADA PHP: " + xx); 
 } else { 
 alert(ajax.statusText); 

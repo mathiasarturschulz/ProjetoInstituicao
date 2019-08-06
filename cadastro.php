@@ -41,16 +41,23 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codi
 <div class="container">
     <h2>&nbspCadastro de Turma</h2><br>
 
-    <form action="?act=info" method="POST" class="form-horizontal">
+    <!--<form action="?act=info" method="POST" class="form-horizontal">
         <h5>&nbspAluno</h5>
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label for="">Código</label>
-                <input type="number" name="codigo" class="form-control" value="<?= isset($_POST['codigo']) ? $_POST['codigo'] : "" ?>" required>
+                <input type="number" name="codigo" class="form-control" value="CODIGO" required>
             </div>
             <button type="submit" class="btn btn-sm btn-success" style="height: 35px; margin-top: 33px;"><i class='fa fa-check-circle'></i> Okay</button>
         </div>
-    </form>
+    </form>-->
+
+    <label for="">Codigo</label>
+    <input type="number" id="valorIni">
+
+    <button type="button" onClick="calcula();"><i class='fa fa-check-circle'></i> Okay</button>
+
+    <textarea id="resultado" cols="30" rows="10"></textarea>
 
     <div style="width: 50%;">
         <table class="table table-hover" id="tabela_aluno">
@@ -60,8 +67,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codi
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                <?= isset($table) ? $table : "" ?>
+            <tbody id="table_body">
             </tbody>
         </table>
         <div class="pull-right">
