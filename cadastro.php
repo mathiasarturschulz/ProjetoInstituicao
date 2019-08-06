@@ -62,7 +62,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codi
 
     <h5>&nbspAluno</h5>
     <div class="form-row">
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-6">
             <label for="">Código:</label>
             <input type="number" id="valorIni" class="form-control">
             <button type="button" class="btn btn-sm btn-success pull-right" style="margin-top: 20px;" onClick="calcula();"><i class='fa fa-check-circle'></i> Buscar Aluno</button>
@@ -81,7 +81,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codi
     <br><h5>&nbspAlunos Adicionados</h5>
     <table id="tabela_lista_alunos" class="table">
         <thead>
-            <th>Nome</th>
+            <th id="tabela_nome">Nome</th>
             <th>Score</th>
             <th>Posicao</th>
             <th>Desde</th>

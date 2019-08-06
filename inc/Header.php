@@ -21,10 +21,10 @@ require_once "autoload.php";
 <body>
     <!-- MENU -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-        <div class="container">
+        <div id="main">
             <h2 class="navbar-brand mt-3">Instituição</h2>
         </div>
     </nav>
 
-    <main class="container">
+    <main id="main">
         <br>

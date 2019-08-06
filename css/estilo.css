@@ -11,3 +11,17 @@
     border: 0 none;
     outline: 0;
 } 
+
+#main {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#tabela_nome{width: 100px;}
+#score{width: 10px;}
+#posicao{width: 10px;}
+#desde{width: 10px;}
+#resolvidos{width: 10px;}
+#tentados{width: 10px;}
+#submissoes{width: 10px;}
+#instituicao{width: 10px;}
