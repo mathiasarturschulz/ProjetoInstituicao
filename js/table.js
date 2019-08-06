@@ -1,9 +1,9 @@
 
-window.onload = function(){
-    document.getElementById('btn_adicionar_linha').addEventListener('click', function(){
-        adicionarLinhaTabela()
-    })
-}
+// window.onload = function(){
+//     document.getElementById('btn_adicionar_linha').addEventListener('click', function(){
+//         adicionarLinhaTabela()
+//     })
+// }
 
 function adicionarLinhaTabela(){
     console.log('adicionarLinhaTabela')
@@ -22,14 +22,15 @@ function adicionarLinhaTabela(){
     var colunaInstituicao = tabelaUltimaLinha.insertCell(7)
     var colunaAcoes = tabelaUltimaLinha.insertCell(8)
 
-    colunaNome.innerHTML = document.getElementById("nome").innerText
-    colunaScore.innerHTML = document.getElementById("score").innerText
-    colunaPosicao.innerHTML = document.getElementById("posicao").innerText
-    colunaDesde.innerHTML = document.getElementById("desde").innerText
-    colunaResolvidos.innerHTML = document.getElementById("resolvidos").innerText
-    colunaTentados.innerHTML = document.getElementById("tentados").innerText
-    colunaSubmissoes.innerHTML = document.getElementById("submissoes").innerText
-    colunaInstituicao.innerHTML = document.getElementById("instituicao").innerText
+    colunaNome.innerHTML = "<input type='text' style='border: 0 none;' id='input_tabela' name='arrayNomes[]' value='" + document.getElementById("nome").innerText + "' readonly/>"
+    colunaScore.innerHTML = "<input type='text' id='input_tabela' name='arrayScores[]' value='" + document.getElementById("score").innerText + "' readonly/>"
+    colunaPosicao.innerHTML = "<input type='text' id='input_tabela' name='arrayPosicoes[]' value='" + document.getElementById("posicao").innerText + "' readonly/>"
+    colunaDesde.innerHTML = "<input type='text' id='input_tabela' name='arrayDesde[]' value='" + document.getElementById("desde").innerText + "' readonly/>"
+    colunaResolvidos.innerHTML = "<input type='text' id='input_tabela' name='arrayResolvidos[]' value='" + document.getElementById("resolvidos").innerText + "' readonly/>"
+    colunaTentados.innerHTML = "<input type='text' id='input_tabela' name='arrayTentados[]' value='" + document.getElementById("tentados").innerText + "' readonly/>"
+    colunaSubmissoes.innerHTML = "<input type='text' id='input_tabela' name='arraySubmissoes[]' value='" + document.getElementById("submissoes").innerText + "' readonly/>"
+    colunaInstituicao.innerHTML = "<input type='text' id='input_tabela' name='arrayInstituicoes[]' value='" + document.getElementById("instituicao").innerText + "' readonly/>"
+    
     colunaAcoes.innerHTML = "<button class=\"btn btn-sm btn-danger\" type=\"button\" onclick='removerLinhaTabela(this)'><i class='fa fa-trash'></i> Excluir</button>"
 
     // atualizarSeqIndexes()

@@ -65,27 +65,38 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codi
             </tbody>
         </table>
         <div class="pull-right">
-            <button type="button" id="btn_adicionar_linha" class="btn btn-sm btn-primary" style="height: 35px; margin-top: 33px;"><i class='fa fa-plus-circle'></i> Adicionar</button>
+            <button type="button" class="btn btn-sm btn-primary" style="height: 35px; margin-top: 33px;" onclick="adicionarLinhaTabela()"><i class='fa fa-plus-circle'></i> Adicionar</button>
         </div>
     </div>
 
-    <table id="tabela_lista_alunos" class="table">
-        <thead>
-            <th>Nome</th>
-            <th>Score</th>
-            <th>Posicao</th>
-            <th>Desde</th>
-            <th>Resolvidos</th>
-            <th>Tentados</th>
-            <th>Submissoes</th>
-            <th>Instituicao</th>
-            <th>Ações</th>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+    <form action="cadastro_aluno.php" method="POST" class="form-horizontal">
 
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="">Nome da Turma</label>
+                <input type="text" name="nome_turma" class="form-control" value="" required>
+            </div>
+        </div>
 
+        <table id="tabela_lista_alunos" class="table">
+            <thead>
+                <th>Nome</th>
+                <th>Score</th>
+                <th>Posicao</th>
+                <th>Desde</th>
+                <th>Resolvidos</th>
+                <th>Tentados</th>
+                <th>Submissoes</th>
+                <th>Instituicao</th>
+                <th>Ações</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-sm btn-primary"><i class='fa fa-plus-circle'></i> Adicionar Turma</button>
+
+    </form>
 
 </div>
 
