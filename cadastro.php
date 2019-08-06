@@ -1,14 +1,13 @@
 <?php
     require_once "inc/Header.php";
+    require_once('helpers/Conversor.php');
 ?>
 
 <?php
-
-$oAluno = null;
+$aListaAluno = null;
 
 // VISUALIZAR INFORMAÇÕES DE UM ALUNO
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codigo'])) {
-    require_once('helpers/Conversor.php');
 
     $json_data = Conversor::getDadosAlunoJSONComOID($_POST['codigo']);
     $aData =  json_decode($json_data, true);
@@ -23,24 +22,23 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codi
             ->setTentados($aData['tentados'])
             ->setSubmissoes($aData['submetidos'])
             ->setInstituicao($aData['instituicao']);
+        $aListaAluno[] = $oAluno;
 
         $table = ""
-            . "<tr><td>Nome</td><td>{$oAluno->getNome()}</td></tr>"
-            . "<tr><td>Score</td><td name=\"score\">{$oAluno->getScore()}</td></tr>"
-            . "<tr><td>Posicao</td><td name=\"posicao\" value='teste123123'>{$oAluno->getPosicao()}</td></tr>"
-            . "<tr><td>Desde</td><td>{$oAluno->getDesde()->format('d-m-Y')}</td></tr>"
-            . "<tr><td>Resolvidos</td><td>{$oAluno->getResolvidos()}</td></tr>"
-            . "<tr><td>Tentados</td><td>{$oAluno->getTentados()}</td></tr>"
-            . "<tr><td>Submissoes</td><td>{$oAluno->getSubmissoes()}</td></tr>"
-            . "<tr><td>Instituicao</td><td>{$oAluno->getInstituicao()}</td></tr>"
+            . "<tr> <td>Nome</td>        <td id='nome'>{$oAluno->getNome()}</td> </tr>"
+            . "<tr> <td>Score</td>       <td id='score'>{$oAluno->getScore()}</td> </tr>"
+            . "<tr> <td>Posicao</td>     <td id='posicao'>{$oAluno->getPosicao()}</td> </tr>"
+            . "<tr> <td>Desde</td>       <td id='desde'>{$oAluno->getDesde()->format('d-m-Y')}</td> </tr>"
+            . "<tr> <td>Resolvidos</td>  <td id='resolvidos'>{$oAluno->getResolvidos()}</td> </tr>"
+            . "<tr> <td>Tentados</td>    <td id='tentados'>{$oAluno->getTentados()}</td> </tr>"
+            . "<tr> <td>Submissoes</td>  <td id='submissoes'>{$oAluno->getSubmissoes()}</td> </tr>"
+            . "<tr> <td>Instituicao</td> <td id='instituicao'>{$oAluno->getInstituicao()}</td> </tr>"
         ;
     }
 }
-
 ?>
 
 <div class="container">
-    <input type="text" name="nome" id="" readonly>
     <h2>&nbspCadastro de Turma</h2><br>
 
     <form action="?act=info" method="POST" class="form-horizontal">
@@ -55,25 +53,40 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codi
     </form>
 
     <div style="width: 50%;">
-        <form action="cadastro_aluno.php" method="post">
-            <input type="hidden" name="teste" value="<?= 1 ?>">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th name="dados">Dados do Aluno</th>
-                        <th name="dados2" value="22"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?= isset($table) ? $table : "" ?>
-                </tbody>
-            </table>
-            <div class="pull-right">
-                <input type="hidden" name="id" value="<?= 1 ?>">
-                <button type="submit" class="btn btn-sm btn-primary" style="height: 35px; margin-top: 33px;"><i class='fa fa-plus-circle'></i> Adicionar</button>
-            </div>
-        </form>
+        <table class="table table-hover" id="tabela_aluno">
+            <thead>
+                <tr>
+                    <th>Dados do Aluno</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?= isset($table) ? $table : "" ?>
+            </tbody>
+        </table>
+        <div class="pull-right">
+            <button type="button" id="btn_adicionar_linha" class="btn btn-sm btn-primary" style="height: 35px; margin-top: 33px;"><i class='fa fa-plus-circle'></i> Adicionar</button>
+        </div>
     </div>
+
+    <table id="tabela_lista_alunos" class="table">
+        <thead>
+            <th>Nome</th>
+            <th>Score</th>
+            <th>Posicao</th>
+            <th>Desde</th>
+            <th>Resolvidos</th>
+            <th>Tentados</th>
+            <th>Submissoes</th>
+            <th>Instituicao</th>
+            <th>Ações</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+
+
 </div>
 
 <?php
