@@ -38,73 +38,67 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] === "info" && isset($_POST['codi
 }
 ?>
 
-<div class="container">
-    <h2>&nbspCadastro de Turma</h2><br>
+<h2>&nbspCadastro de Turma</h2><br>
 
-    <!--<form action="?act=info" method="POST" class="form-horizontal">
-        <h5>&nbspAluno</h5>
-        <div class="form-row">
-            <div class="form-group col-md-3">
-                <label for="">Código</label>
-                <input type="number" name="codigo" class="form-control" value="CODIGO" required>
-            </div>
-            <button type="submit" class="btn btn-sm btn-success" style="height: 35px; margin-top: 33px;"><i class='fa fa-check-circle'></i> Okay</button>
+<!--<form action="?act=info" method="POST" class="form-horizontal">
+    <h5>&nbspAluno</h5>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="">Código</label>
+            <input type="number" name="codigo" class="form-control" value="" required>
         </div>
-    </form>-->
+        <button type="submit" class="btn btn-sm btn-success" style="height: 35px; margin-top: 33px;"><i class='fa fa-check-circle'></i> Okay</button>
+    </div>
+</form>-->
 
-    <label for="">Codigo</label>
-    <input type="number" id="valorIni">
+<form action="cadastro_aluno.php" method="POST" class="form-horizontal">
 
-    <button type="button" onClick="calcula();"><i class='fa fa-check-circle'></i> Okay</button>
-
-    <textarea id="resultado" cols="30" rows="10"></textarea>
-
-    <div style="width: 50%;">
-        <table class="table table-hover" id="tabela_aluno">
-            <thead>
-                <tr>
-                    <th>Dados do Aluno</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="table_body">
-            </tbody>
-        </table>
-        <div class="pull-right">
-            <button type="button" class="btn btn-sm btn-primary" style="height: 35px; margin-top: 33px;" onclick="adicionarLinhaTabela()"><i class='fa fa-plus-circle'></i> Adicionar</button>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="">Nome da Turma:</label>
+            <input type="text" name="nome_turma" class="form-control" value="" required>
         </div>
     </div>
 
-    <form action="cadastro_aluno.php" method="POST" class="form-horizontal">
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="">Nome da Turma</label>
-                <input type="text" name="nome_turma" class="form-control" value="" required>
-            </div>
+    <h5>&nbspAluno</h5>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label for="">Código:</label>
+            <input type="number" id="valorIni" class="form-control">
+            <button type="button" class="btn btn-sm btn-success pull-right" style="margin-top: 20px;" onClick="calcula();"><i class='fa fa-check-circle'></i> Buscar Aluno</button>
         </div>
 
-        <table id="tabela_lista_alunos" class="table">
-            <thead>
-                <th>Nome</th>
-                <th>Score</th>
-                <th>Posicao</th>
-                <th>Desde</th>
-                <th>Resolvidos</th>
-                <th>Tentados</th>
-                <th>Submissoes</th>
-                <th>Instituicao</th>
-                <th>Ações</th>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <div class="form-group col-md-6">
+        <label for="">Informações do Aluno:</label>
+            <table class="table table-hover table-sm" id="tabela_aluno">
+                <tbody id="table_body">
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-sm btn-primary pull-right" style="" onclick="adicionarLinhaTabela()"><i class='fa fa-plus-circle'></i> Adicionar Aluno</button>
+        </div>
+    </div>
 
-        <button type="submit" class="btn btn-sm btn-primary"><i class='fa fa-plus-circle'></i> Adicionar Turma</button>
+    <br><h5>&nbspAlunos Adicionados</h5>
+    <table id="tabela_lista_alunos" class="table">
+        <thead>
+            <th>Nome</th>
+            <th>Score</th>
+            <th>Posicao</th>
+            <th>Desde</th>
+            <th>Resolvidos</th>
+            <th>Tentados</th>
+            <th>Submissoes</th>
+            <th>Instituicao</th>
+            <th>Ações</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
-    </form>
+    <button type="submit" class="btn btn-sm btn-primary pull-right"><i class='fa fa-plus-circle'></i> Adicionar Turma</button>
 
-</div>
+</form>
+
 
 <?php
     require_once "inc/Footer.php";

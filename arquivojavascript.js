@@ -26,7 +26,7 @@ ajax.open("GET", "arquivophp.php?n=" + valIni, true);
 ajax.onreadystatechange = function() { 
 if(ajax.readyState == 4) { 
 if(ajax.status == 200) { 
-document.getElementById("resultado").value = ajax.responseText; 
+// document.getElementById("resultado").value = ajax.responseText; 
 var xx = ajax.responseText; 
 
 table_body = document.getElementById("table_body"); 
