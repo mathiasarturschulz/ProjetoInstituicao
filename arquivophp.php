@@ -34,6 +34,7 @@ if ($aData) {
     // $aListaAluno[] = $oAluno;
 
     $table = ""
+        . "<tr> <td>Código</td>      <td id='codigo'>{$oAluno->getCodigo()}</td> </tr>"
         . "<tr> <td>Nome</td>        <td id='nome'>{$oAluno->getNome()}</td> </tr>"
         . "<tr> <td>Score</td>       <td id='score'>{$oAluno->getScore()}</td> </tr>"
         . "<tr> <td>Posicao</td>     <td id='posicao'>{$oAluno->getPosicao()}</td> </tr>"

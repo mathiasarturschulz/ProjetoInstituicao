@@ -12,17 +12,19 @@ function adicionarLinhaTabela(){
     var tabelaQtdLinhas = tabelaListaAlunos.rows.length
     var tabelaUltimaLinha = tabelaListaAlunos.insertRow(tabelaQtdLinhas)
 
-    var colunaNome = tabelaUltimaLinha.insertCell(0)
-    var colunaScore = tabelaUltimaLinha.insertCell(1)
-    var colunaPosicao = tabelaUltimaLinha.insertCell(2)
-    var colunaDesde = tabelaUltimaLinha.insertCell(3)
-    var colunaResolvidos = tabelaUltimaLinha.insertCell(4)
-    var colunaTentados = tabelaUltimaLinha.insertCell(5)
-    var colunaSubmissoes = tabelaUltimaLinha.insertCell(6)
-    var colunaInstituicao = tabelaUltimaLinha.insertCell(7)
-    var colunaAcoes = tabelaUltimaLinha.insertCell(8)
+    var colunaCodigo = tabelaUltimaLinha.insertCell(0)
+    var colunaNome = tabelaUltimaLinha.insertCell(1)
+    var colunaScore = tabelaUltimaLinha.insertCell(2)
+    var colunaPosicao = tabelaUltimaLinha.insertCell(3)
+    var colunaDesde = tabelaUltimaLinha.insertCell(4)
+    var colunaResolvidos = tabelaUltimaLinha.insertCell(5)
+    var colunaTentados = tabelaUltimaLinha.insertCell(6)
+    var colunaSubmissoes = tabelaUltimaLinha.insertCell(7)
+    var colunaInstituicao = tabelaUltimaLinha.insertCell(8)
+    var colunaAcoes = tabelaUltimaLinha.insertCell(9)
 
-    colunaNome.innerHTML = "<input type='text' style='border: 0 none;' id='input_tabela' name='arrayNomes[]' value='" + document.getElementById("nome").innerText + "' readonly/>"
+    colunaCodigo.innerHTML = "<input type='text' id='input_tabela' name='arrayCodigos[]' value='" + document.getElementById("codigo").innerText + "' readonly/>"
+    colunaNome.innerHTML = "<input type='text' id='input_tabela' name='arrayNomes[]' value='" + document.getElementById("nome").innerText + "' readonly/>"
     colunaScore.innerHTML = "<input type='text' id='input_tabela' name='arrayScores[]' value='" + document.getElementById("score").innerText + "' readonly/>"
     colunaPosicao.innerHTML = "<input type='text' id='input_tabela' name='arrayPosicoes[]' value='" + document.getElementById("posicao").innerText + "' readonly/>"
     colunaDesde.innerHTML = "<input type='text' id='input_tabela' name='arrayDesde[]' value='" + document.getElementById("desde").innerText + "' readonly/>"
