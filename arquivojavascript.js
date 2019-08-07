@@ -18,7 +18,7 @@ function iniciaAjax() {
     return req; 
 }
 
-function insereAluno() { 
+function buscaDadosAluno() { 
     codigoParaBuscar = document.getElementById("codigoParaBuscar").value; 
     ajax = iniciaAjax(); 
     if(ajax) { 

@@ -66,7 +66,7 @@
         <div class="form-group col-md-6">
             <label for="">Código:</label>
             <input type="number" id="codigoParaBuscar" class="form-control">
-            <button type="button" class="btn btn-sm btn-success pull-right" style="margin-top: 20px;" onClick="insereAluno();"><i class='fa fa-check-circle'></i> Buscar Aluno</button>
+            <button type="button" class="btn btn-sm btn-success pull-right" style="margin-top: 20px;" onClick="buscaDadosAluno();"><i class='fa fa-check-circle'></i> Buscar Aluno</button>
         </div>
 
         <div class="form-group col-md-6">
