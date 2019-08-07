@@ -65,14 +65,14 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="">Código:</label>
-            <input type="number" id="valorIni" class="form-control">
-            <button type="button" class="btn btn-sm btn-success pull-right" style="margin-top: 20px;" onClick="calcula();"><i class='fa fa-check-circle'></i> Buscar Aluno</button>
+            <input type="number" id="codigoParaBuscar" class="form-control">
+            <button type="button" class="btn btn-sm btn-success pull-right" style="margin-top: 20px;" onClick="insereAluno();"><i class='fa fa-check-circle'></i> Buscar Aluno</button>
         </div>
 
         <div class="form-group col-md-6">
         <label for="">Informações do Aluno:</label>
             <table class="table table-hover table-sm" id="tabela_aluno">
-                <tbody id="table_body">
+                <tbody id="table_aluno_body">
                 </tbody>
             </table>
             <button type="button" class="btn btn-sm btn-primary pull-right" style="" onclick="adicionarLinhaTabela()"><i class='fa fa-plus-circle'></i> Adicionar Aluno</button>
