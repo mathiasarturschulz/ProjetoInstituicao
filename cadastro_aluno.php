@@ -26,12 +26,16 @@
         $oAlunoDAO = new AlunoDAO();
         $idAluno = $oAlunoDAO->verificaPossuiCadastro($sCodigo);
         if (!$idAluno) {
+            // Formata a data
+            $aDataDesde = explode('/', $_POST['arrayDesde'][$chave]);
+            $dDataDesde = new DateTime($aDataDesde[2] . '/' . $aDataDesde[1] . '/' . $aDataDesde[0]);
+
             $oAluno = (new Aluno())
                 ->setCodigo($sCodigo)
                 ->setNome($_POST['arrayNomes'][$chave])
                 ->setScore($_POST['arrayScores'][$chave])
                 ->setPosicao($_POST['arrayPosicoes'][$chave])
-                ->setDesde(new DateTime($_POST['arrayDesde'][$chave]))
+                ->setDesde($dDataDesde)
                 ->setResolvidos($_POST['arrayResolvidos'][$chave])
                 ->setTentados($_POST['arrayTentados'][$chave])
                 ->setSubmissoes($_POST['arraySubmissoes'][$chave]);
