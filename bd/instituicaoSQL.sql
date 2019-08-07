@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS Aluno (
 	resolvidos INT NULL,
 	tentados INT NULL,
 	submissoes INT NULL,
-	idInstituicao INT NOT NULL,
+	idInstituicao INT,
 	UNIQUE INDEX codigo_UNIQUE (codigo ASC),
 	CONSTRAINT fk_Aluno_Instituicao FOREIGN KEY (idInstituicao) REFERENCES Instituicao(idInstituicao)
 );
@@ -36,15 +36,10 @@ CREATE TABLE IF NOT EXISTS TurmaAluno (
 	CONSTRAINT fk_Turma_has_Aluno_Aluno1 FOREIGN KEY (idAluno) REFERENCES Aluno(idAluno)
 );
 
--- select * from instituicao;
--- select * from aluno;
--- select * from turma;
--- select * from turmaaluno;
+select * from instituicao;
+select * from aluno;
+select * from turma;
+select * from turmaaluno;
 
-insert into turma values
-(null, 'Redes de Computadores'),
-(null, 'Inteligência Artificial'),
-(null, 'Deselvolvimento WEB II');
-
-
+-- insert into turma values (null, 'Redes de Computadores'), (null, 'Inteligência Artificial'), (null, 'Deselvolvimento WEB II');
 

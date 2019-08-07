@@ -20,17 +20,17 @@
     // ALUNO
     $oAlunoDAO = new AlunoDAO();
 
-    // $oAluno = (new Aluno())
-    //     ->setCodigo(123)
-    //     ->setNome('Mathias Schulz')
-    //     ->setScore(1000)
-    //     ->setPosicao(250)
-    //     ->setDesde(new DateTime('10/10/2019'))
-    //     ->setResolvidos(10)
-    //     ->setTentados(13)
-    //     ->setSubmissoes(50)
-    //     ->setInstituicao((new Instituicao())->setId(1));
-    // echo $oAlunoDAO->insert($oAluno)[1];
+    $oAluno = (new Aluno())
+        ->setCodigo(12345)
+        ->setNome('Mathias Schulz')
+        ->setScore(1000)
+        ->setPosicao(250)
+        ->setDesde(new DateTime('10/10/2019'))
+        ->setResolvidos(10)
+        ->setTentados(13)
+        ->setSubmissoes(50)
+        ->setInstituicao((new Instituicao())->setId(null));
+    echo $oAlunoDAO->insert($oAluno)[1];
 
     // $oAluno = (new Aluno())
     //     ->setId(1)
@@ -48,6 +48,8 @@
     // $oAluno = (new Aluno())
     //     ->setId(1);
     // echo $oAlunoDAO->delete($oAluno->getId())[1];
+
+    // $oAlunoDAO->verificaPossuiCadastro(123);
 
 
     // TURMA

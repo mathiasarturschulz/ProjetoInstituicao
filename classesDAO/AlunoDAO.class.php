@@ -218,4 +218,28 @@ class AlunoDAO {
             return [false, 'Error: ' . $e->getMessage()];
         }
     }
+
+    /**
+     * Método que verifica se o respectivo código já se encontra cadastrado no sistema
+     * 
+     * Retorna o id caso possua cadastro
+     */
+    public function verificaPossuiCadastro($iCodigo)
+    {
+        try {
+            $sql = "SELECT idAluno as id FROM aluno WHERE codigo = " . $iCodigo;
+            $pdo = Conexao::startConnection();
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $result = [];
+            $linha = $stmt->fetch(PDO::FETCH_ASSOC);
+            $result = $linha['id'];
+            if ($result) {
+                return $result;
+            }
+            return 0;
+        } catch(PDOException $e) {
+            return [false, 'Error: ' . $e->getMessage()];
+        }
+    }
 }
