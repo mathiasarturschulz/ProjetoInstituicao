@@ -6,22 +6,26 @@
     margin-right: 5px;
 }
 
+#main {
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
 #input_tabela {
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
-} 
-
-#main {
-    margin-left: 10%;
-    margin-right: 10%;
 }
 
-#tabela_nome{width: 100px;}
-#score{width: 10px;}
-#posicao{width: 10px;}
-#desde{width: 10px;}
-#resolvidos{width: 10px;}
-#tentados{width: 10px;}
-#submissoes{width: 10px;}
-#instituicao{width: 10px;}
+#input_number {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+    width: 70px;
+}
+#input_data {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+    width: 90px;
+}
