@@ -30,10 +30,12 @@
                             <td><?php echo utf8_encode($oTurma->getNome()); ?></td>
                             <td id='tabela_acoes'>
                                 <div class="form-row">
+                                    <!-- EDITAR 
                                     <form action="" method="post">
                                         <input type="hidden" name="id" value="<?= $oTurma->getId() ?>">
                                         <button id="btn-editar" class="btn btn-sm btn-warning"><i class='fa fa-pencil'></i> Editar</button>
                                     </form>
+                                    -->
                                     <form action="excluir_turma.php" method="post">
                                         <input type="hidden" name="id" value="<?= $oTurma->getId() ?>">
                                         <button class="btn btn-sm btn-danger"><i class='fa fa-trash'></i> Excluir</button>
