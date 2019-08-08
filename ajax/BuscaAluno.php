@@ -26,7 +26,7 @@ if ($aData) {
         . "<tr> <td>Nome</td>        <td id='nome'>{$aData['nome']}</td> </tr>"
         . "<tr> <td>Score</td>       <td id='score'>{$aData['score']}</td> </tr>"
         . "<tr> <td>Posicao</td>     <td id='posicao'>{$aData['posicao']}</td> </tr>"
-        . "<tr> <td>Desde</td>       <td id='desde'>" . (new DateTime($aData['desde']))->format('d/m/Y') . "</td> </tr>"
+        . "<tr> <td>Desde</td>       <td id='desde'>{$aData['desde']}</td> </tr>"
         . "<tr> <td>Resolvidos</td>  <td id='resolvidos'>{$aData['resolvidos']}</td> </tr>"
         . "<tr> <td>Tentados</td>    <td id='tentados'>{$aData['tentados']}</td> </tr>"
         . "<tr> <td>Submissoes</td>  <td id='submissoes'>{$aData['submetidos']}</td> </tr>"
