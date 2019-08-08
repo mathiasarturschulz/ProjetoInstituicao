@@ -1,12 +1,5 @@
 
-// window.onload = function(){
-//     document.getElementById('btn_adicionar_linha').addEventListener('click', function(){
-//         adicionarLinhaTabela()
-//     })
-// }
-
 function adicionarLinhaTabela(){
-    console.log('adicionarLinhaTabela')
 
     var tabelaListaAlunos = document.querySelector('#tabela_lista_alunos')
     var tabelaQtdLinhas = tabelaListaAlunos.rows.length

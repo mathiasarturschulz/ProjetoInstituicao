@@ -1,7 +1,7 @@
 <?php 
 
-require_once('helpers/Conversor.php');
-require_once('classes/Aluno.class.php');
+require_once('../helpers/Conversor.php');
+require_once('../classes/Aluno.class.php');
 
 /**
  * Readers para não utilizar o cache do browser

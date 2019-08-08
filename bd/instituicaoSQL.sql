@@ -43,3 +43,14 @@ select * from turmaaluno;
 
 -- insert into turma values (null, 'Redes de Computadores'), (null, 'Inteligência Artificial'), (null, 'Deselvolvimento WEB II');
 
+
+-- instituicao por score
+-- SELECT INST.NOME, SUM(AL.SCORE)  from INSTITUICAO INST INNER JOIN ALUNO AL ON AL.IDINSTITUICAO = INST.IDINSTITUICAO GROUP BY INST.IDINSTITUICAO;
+-- consultar aluno
+-- SELECT * FROM ALUNO WHERE NOME LIKE '%joão%';
+-- turma por score
+-- SELECT TA.IDTURMA, SUM(AL.SCORE) from TURMAALUNO TA INNER JOIN ALUNO AL ON TA.IDALUNO = AL.IDALUNO GROUP BY IDTURMA;
+-- melhores instituicoes (DESC)
+-- SELECT INST.IDINSTITUICAO, SUM(AL.SCORE)/COUNT(*) from INSTITUICAO INST INNER JOIN ALUNO AL ON AL.IDINSTITUICAO = INST.IDINSTITUICAO GROUP BY INST.IDINSTITUICAO DESC;
+
+

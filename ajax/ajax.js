@@ -22,7 +22,7 @@ function buscaDadosAluno() {
     codigoParaBuscar = document.getElementById("codigoParaBuscar").value; 
     ajax = iniciaAjax(); 
     if(ajax) { 
-        ajax.open("GET", "arquivophp.php?n=" + codigoParaBuscar, true); 
+        ajax.open("GET", "ajax/BuscaAluno.php?n=" + codigoParaBuscar, true); 
         ajax.onreadystatechange = function() { 
             if(ajax.readyState == 4) { 
                 if(ajax.status == 200) {
