@@ -35,8 +35,8 @@
     <br><h5>&nbspAlunos Adicionados</h5>
     <table id="tabela_lista_alunos" class="table">
         <thead>
-            <th id="coluna_codigo">Código</th>
-            <th id="tabela_nome">Nome</th>
+            <th>Código</th>
+            <th>Nome</th>
             <th>Score</th>
             <th>Posicao</th>
             <th>Desde</th>
