@@ -29,7 +29,7 @@ function buscaDadosAluno() {
                     var resposta = ajax.responseText; 
                     table_aluno_body = document.getElementById("table_aluno_body"); 
                     table_aluno_body.innerHTML = resposta;
-                    alert("Busca concluída com sucesso! "); 
+                    // alert("Busca concluída com sucesso! ");
                 } else { 
                     alert(ajax.statusText); 
                 }

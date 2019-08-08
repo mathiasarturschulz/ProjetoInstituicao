@@ -65,6 +65,6 @@
         ->setListaAlunos($aListaAlunos);
     echo $oTurmaDAO->insert($oTurma)[1];
 
-    // header('Location: turma.php');
+    header('Location: turma.php');
 
     require_once "inc/Footer.php";
