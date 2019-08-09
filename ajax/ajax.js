@@ -39,4 +39,28 @@ function buscaDadosAluno() {
     } else{
         alert("Erro Ajax"); 
     } 
+}
+
+function buscaDadosAlunoByName() { 
+    codigoParaBuscar = document.getElementById("nomeParaBuscar").value; 
+    ajax = iniciaAjax(); 
+    if(ajax) { 
+        ajax.open("GET", "ajax/BuscaAlunoByName.php?n=" + codigoParaBuscar, true); 
+        ajax.onreadystatechange = function() { 
+            if(ajax.readyState == 4) { 
+                if(ajax.status == 200) {
+                    var resposta = ajax.responseText; 
+                    table_aluno_by_nome_body = document.getElementById("table_aluno_by_nome_body"); 
+                    table_aluno_by_nome_body.innerHTML = resposta;
+                    // alert("Busca concluída com sucesso! " + resposta);
+                    // alert("Busca concluída com sucesso! ");
+                } else { 
+                    alert(ajax.statusText); 
+                }
+            } 
+        } 
+        ajax.send(null); 
+    } else{
+        alert("Erro Ajax"); 
+    } 
 } 

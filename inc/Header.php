@@ -31,6 +31,9 @@ require_once "autoload.php";
                     <li class="nav-item">
                         <a class="nav-link" href="turma.php">Turmas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aluno.php">Buscar Aluno</a>
+                    </li>
                 </ul>
             </div>
         </div>

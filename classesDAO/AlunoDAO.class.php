@@ -165,15 +165,17 @@ class AlunoDAO {
                 $result = [];
                 while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $oInstituicaoDAO = new InstituicaoDAO();
-                    $oInstituicao = $oInstituicaoDAO->select('id', InstituicaoDAO::TIPO_NUMERO, $linha['idInstituicao'])[1][0];
-    
+                    $oInstituicao = $oInstituicaoDAO->select('idInstituicao', InstituicaoDAO::TIPO_NUMERO, $linha['idInstituicao'])[1][0];
+                    if (!is_object($oInstituicao)) {
+                        $oInstituicao = "";
+                    }
                     $result[] = (new Aluno())
                         ->setID($linha['idAluno'])
                         ->setCodigo($linha['codigo'])
                         ->setNome($linha['nome'])
                         ->setScore($linha['score'])
                         ->setPosicao($linha['posicao'])
-                        ->setDesde($linha['desde'])
+                        ->setDesde(new DateTime($linha['desde']))
                         ->setResolvidos($linha['resolvidos'])
                         ->setTentados($linha['tentados'])
                         ->setSubmissoes($linha['submissoes'])
@@ -198,15 +200,17 @@ class AlunoDAO {
             $result = [];
             while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $oInstituicaoDAO = new InstituicaoDAO();
-                $oInstituicao = $oInstituicaoDAO->select('id', InstituicaoDAO::TIPO_NUMERO, $linha['idInstituicao'])[1][0];
-
+                $oInstituicao = $oInstituicaoDAO->select('idInstituicao', InstituicaoDAO::TIPO_NUMERO, $linha['idInstituicao'])[1][0];
+                if (!is_object($oInstituicao)) {
+                    $oInstituicao = "";
+                }
                 $result[] = (new Aluno())
                     ->setID($linha['id'])
                     ->setCodigo($linha['codigo'])
                     ->setNome($linha['nome'])
                     ->setScore($linha['score'])
                     ->setPosicao($linha['posicao'])
-                    ->setDesde($linha['desde'])
+                    ->setDesde(new DateTime($linha['desde']))
                     ->setResolvidos($linha['resolvidos'])
                     ->setTentados($linha['tentados'])
                     ->setSubmissoes($linha['submissoes'])
