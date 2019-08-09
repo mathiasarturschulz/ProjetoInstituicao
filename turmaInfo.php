@@ -4,8 +4,13 @@
 
 <?php
 
-    
+    include('autoload.php');
 
+    $turmaDAO = new TurmaDAO();
+
+    $oTurma = $turmaDAO->selectTurmaPorId($_GET['id'])[1];
+
+    echo($oTurma);
 
 ?>
 

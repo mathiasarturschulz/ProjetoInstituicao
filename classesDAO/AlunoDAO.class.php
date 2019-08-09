@@ -247,5 +247,37 @@ class AlunoDAO {
         }
     }
 
+    public function selectAlunoPorId($id)
+    {
+        try {
+            $sql = "SELECT * FROM ALUNO WHERE IDALUNO = $id;";
+            $pdo = Conexao::startConnection();
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $result = [];
+            while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $oInstituicaoDAO = new InstituicaoDAO();
+                $oInstituicao = $oInstituicaoDAO->select('idInstituicao', InstituicaoDAO::TIPO_NUMERO, $linha['idInstituicao'])[1][0];
+                if (!is_object($oInstituicao)) {
+                    $oInstituicao = "";
+                }
+                $result[] = (new Aluno())
+                    ->setID($linha['idAluno'])
+                    ->setCodigo($linha['codigo'])
+                    ->setNome($linha['nome'])
+                    ->setScore($linha['score'])
+                    ->setPosicao($linha['posicao'])
+                    ->setDesde(new DateTime($linha['desde']))
+                    ->setResolvidos($linha['resolvidos'])
+                    ->setTentados($linha['tentados'])
+                    ->setSubmissoes($linha['submissoes'])
+                    ->setInstituicao($oInstituicao)
+                ;
+            }
+            return [true, $result];
+        } catch(PDOException $e) {
+            return [false, 'Error: ' . $e->getMessage()];
+        }
+    }
 }
 

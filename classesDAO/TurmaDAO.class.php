@@ -271,4 +271,40 @@ class TurmaDAO {
             return [false, 'Error: ' . $e->getMessage()];
         }
     }
+
+    public function selectTurmaPorId($id)    
+    {
+        try {
+            $sql = "SELECT * FROM TURMA WHERE IDTURMA = $id;";
+
+            $pdo = Conexao::startConnection();
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $turma = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $sql = "SELECT TA.idAluno FROM TURMA T INNER JOIN TURMAALUNO TA ON T.IDTURMA = TA.IDTURMA WHERE T.IDTURMA = 1;";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $alunosRs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $listaAlunos = [];
+            foreach($alunosRs as $aluno){
+                $alunoDAO = new AlunoDAO();
+                $aluno = $alunoDAO->selectAlunoPorId(intval($aluno['idAluno']));
+                $listaAlunos[] = $aluno;
+            }
+
+            $result = new Turma();
+
+            $result->setNome($turma[0]['nome']);
+            $result->setId($turma[0]['idTurma']);
+            $result->setListaAlunos($listaAlunos);
+            var_dump($listaAlunos[0][1]);
+            return [true, $result];
+
+        } catch(PDOException $e) {
+            return [false, 'Error: ' . $e->getMessage()];
+        }
+    }
+
 }
