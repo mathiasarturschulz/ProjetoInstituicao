@@ -176,4 +176,43 @@ class InstituicaoDAO {
             return [false, 'Error: ' . $e->getMessage()];
         }
     }
+
+    public function selectByInstitutionScoreAverageDesc()   
+    {
+        try {
+            $sql = "SELECT INST.NOME as instNome, SUM(AL.SCORE)/COUNT(*) as sumScore from INSTITUICAO INST INNER JOIN ALUNO AL ON AL.IDINSTITUICAO = INST.IDINSTITUICAO GROUP BY INST.IDINSTITUICAO DESC;";
+            $pdo = Conexao::startConnection();
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $result = [];
+            $insts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach($insts as $inst){
+                $result[] = $inst;   
+            }
+            return [true, $result];
+        } catch(PDOException $e) {
+            return [false, 'Error: ' . $e->getMessage()];
+        }
+    }
+
+    public function selectByInstitutionScore()   
+    {
+        try {
+            $sql = "SELECT INST.NOME as instNome, SUM(AL.SCORE) as sumScore FROM INSTITUICAO INST INNER JOIN ALUNO AL ON AL.IDINSTITUICAO = INST.IDINSTITUICAO GROUP BY INST.IDINSTITUICAO;";
+            $pdo = Conexao::startConnection();
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $result = [];
+            $insts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach($insts as $inst){
+                $result[] = $inst;   
+            }
+            return [true, $result];
+        } catch(PDOException $e) {
+            return [false, 'Error: ' . $e->getMessage()];
+        }
+    }
+
 }
