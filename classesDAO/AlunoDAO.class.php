@@ -247,25 +247,5 @@ class AlunoDAO {
         }
     }
 
-    public function selectByClassScore()   
-    {
-        try {
-            $sql = "SELECT TA.IDTURMA as idTurma, SUM(AL.SCORE) as sumScore from TURMAALUNO TA INNER JOIN ALUNO AL ON TA.IDALUNO = AL.IDALUNO GROUP BY IDTURMA;
-            ;
-            ";
-            $pdo = Conexao::startConnection();
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute();
-            $result = [];
-            $classes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-            foreach($classes as $class){
-                $result[] = $class;   
-            }
-            return [true, $result];
-        } catch(PDOException $e) {
-            return [false, 'Error: ' . $e->getMessage()];
-        }
-    }
 }
 
