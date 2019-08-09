@@ -21,6 +21,11 @@ $json_data = Conversor::getDadosAlunoJSONComOID($codigoAluno);
 $table = "";
 $aData = json_decode($json_data, true);
 if ($aData) {
+    $instituicao = $aData['instituicao'];
+    if ($instituicao == "") {
+        $instituicao = "Sem Instituição";
+    }
+
     $table = ""
         . "<tr> <td>Código</td>      <td id='codigo'>{$codigoAluno}</td> </tr>"
         . "<tr> <td>Nome</td>        <td id='nome'>{$aData['nome']}</td> </tr>"
@@ -30,7 +35,7 @@ if ($aData) {
         . "<tr> <td>Resolvidos</td>  <td id='resolvidos'>{$aData['resolvidos']}</td> </tr>"
         . "<tr> <td>Tentados</td>    <td id='tentados'>{$aData['tentados']}</td> </tr>"
         . "<tr> <td>Submissoes</td>  <td id='submissoes'>{$aData['submetidos']}</td> </tr>"
-        . "<tr> <td>Instituicao</td> <td id='instituicao'>{$aData['instituicao']}</td> </tr>"
+        . "<tr> <td>Instituicao</td> <td id='instituicao'>{$instituicao}</td> </tr>"
     ;
 }
 
