@@ -25,7 +25,7 @@
             
             if ($aResult[0]) {
                 foreach ($aResult[1] as $chave => $oTurma) {
-                    ?><tr>
+                    ?><tr onClick="window.location='turmaInfo.php?id=<?php echo $oTurma->getId(); ?>'">
                             <td id='tabela_id'><?php echo $oTurma->getId(); ?></td>
                             <td><?php echo utf8_encode($oTurma->getNome()); ?></td>
                             <td id='tabela_acoes'>
