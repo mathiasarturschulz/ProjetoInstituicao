@@ -44,7 +44,7 @@ insert into instituicao values
 insert into aluno values
 (null, 111, 'Mathias Schulz', 30.0, 300, '2018-10-10', 10, 20, 50, 1),
 (null, 222, 'Artur Silva', 15.7, 800, '2016-11-11', 15, 46, 99, 1),
-(null, 333, 'João Back', 45.8, 250, '2019-12-15', 6, 6, 6, 1),
+(null, 333, 'João Back', 45.8, 250, '2019-12-15', 6, 6, 6, 3),
 (null, 444, 'Paulo Silva', 46.4, 777, '2015-03-24', 20, 40, 140, 2);
 
 insert into turma values
@@ -71,3 +71,10 @@ insert into turmaaluno values
 -- SELECT TA.IDTURMA, SUM(AL.SCORE) from TURMAALUNO TA INNER JOIN ALUNO AL ON TA.IDALUNO = AL.IDALUNO GROUP BY IDTURMA;
 -- melhores instituicoes (DESC)
 -- SELECT INST.IDINSTITUICAO, SUM(AL.SCORE)/COUNT(*) from INSTITUICAO INST INNER JOIN ALUNO AL ON AL.IDINSTITUICAO = INST.IDINSTITUICAO GROUP BY INST.IDINSTITUICAO DESC;
+
+
+
+
+
+
+
