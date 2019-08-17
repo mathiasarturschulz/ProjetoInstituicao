@@ -30,6 +30,7 @@
                             <td><?php echo utf8_encode($oTurma->getNome()); ?></td>
                             <td id='tabela_acoes'>
                                 <div class="form-row">
+                                    <button class="btn btn-sm btn-success" onClick="window.location='turmaInfo.php?id=<?php echo $oTurma->getId(); ?>'" style="margin-right: 7px;"><i class='fa fa-eye'></i> Visualizar</button>
                                     <!-- EDITAR 
                                     <form action="" method="post">
                                         <input type="hidden" name="id" value="<?= $oTurma->getId() ?>">
