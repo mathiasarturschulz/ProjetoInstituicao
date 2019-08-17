@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
     <script type="text/javascript" src="js/table.js"></script>
     <script type="text/javascript" src="ajax/ajax.js" language="javascript"></script> 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title>Instituição</title>
 </head>
 

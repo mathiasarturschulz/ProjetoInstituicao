@@ -15,3 +15,8 @@ spl_autoload_register(function ($nomeClasse) {
     require_once("conexao".DIRECTORY_SEPARATOR.$nomeClasse.".class.php");
 });
 
+spl_autoload_register(function ($nomeClasse) {
+  if (file_exists("graficos".DIRECTORY_SEPARATOR.$nomeClasse.".class.php"))
+    require_once("graficos".DIRECTORY_SEPARATOR.$nomeClasse.".class.php");
+});
+
