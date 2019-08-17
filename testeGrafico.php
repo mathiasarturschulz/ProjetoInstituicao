@@ -37,9 +37,9 @@
     $tipoColunaX = Linha::TIPO_PALAVRA;
     $oLinha = new Linha($titulo, $legenda, $nomeEixoX, $tipoColunaX, $nomeEixoY, $arrayEixoX, $arrayEixoY);
     echo $oLinha->gerarGrafico();
-    // // PIZZA
-    // $oPizza = new Pizza($titulo, $arrayEixoX, $arrayEixoY);
-    // echo $oPizza->gerarGrafico();
+    // PIZZA
+    $oPizza = new Pizza($titulo, $arrayEixoX, $arrayEixoY);
+    echo $oPizza->gerarGrafico();
     
 ?>
 
@@ -47,8 +47,8 @@
 <br><br>
 <div id="grafico_linha"></div>
 <br><br>
-<!-- <div id="grafico_pizza" style="width: 900px; height: 500px;"></div>
-<br><br> -->
+<div id="grafico_pizza" style="width: 900px; height: 500px;"></div>
+<br><br>
 
 <?php
     require_once "inc/Footer.php";

@@ -37,3 +37,7 @@
 #tabela_id_instituicao {
     width: 15px;
 }
+
+#click {
+    cursor: pointer;
+}

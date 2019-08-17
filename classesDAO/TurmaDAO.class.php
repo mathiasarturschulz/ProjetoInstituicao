@@ -282,7 +282,7 @@ class TurmaDAO {
             $stmt->execute();
             $turma = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $sql = "SELECT TA.idAluno FROM TURMA T INNER JOIN TURMAALUNO TA ON T.IDTURMA = TA.IDTURMA WHERE T.IDTURMA = 1;";
+            $sql = "SELECT TA.idAluno FROM TURMA T INNER JOIN TURMAALUNO TA ON T.IDTURMA = TA.IDTURMA WHERE T.IDTURMA = $id;";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $alunosRs = $stmt->fetchAll(PDO::FETCH_ASSOC);

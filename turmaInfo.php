@@ -26,13 +26,17 @@
         $listaScores[] = $oAluno->getScore();
     }
 
-    // GRÁFICO DE BARRA
+    // GRÁFICOS
     $titulo = "Alunos da turma " . utf8_encode($oTurma->getNome()) . " por Score";
+    // GRÁFICO DE BARRA
     $legenda = "Score";
     $nomeEixoX = "Aluno";
     $nomeEixoY = "Score";
     $oBarra = new Barra($titulo, $legenda, $nomeEixoX, $nomeEixoY, $listaNomes, $listaScores);
     echo $oBarra->gerarGrafico();
+    // GRÁFICO DE PIZZA
+    $oPizza = new Pizza($titulo, $listaNomes, $listaScores);
+    echo $oPizza->gerarGrafico();
 ?>
 
 <h2>&nbspVisualizar Turma</h2><br>
@@ -64,6 +68,7 @@
 
 <br><h5>&nbspAluno por Score</h5>
 <div id="grafico_barra"></div>
+<div id="grafico_pizza" style="width: 900px; height: 500px;"></div>
 
 <?php
     require_once "inc/Footer.php";
