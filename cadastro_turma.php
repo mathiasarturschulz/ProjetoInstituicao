@@ -2,9 +2,6 @@
     require_once "inc/Header.php";
     echo "<br>";
 
-    echo var_dump($_POST);
-    echo 'TESTE';
-
     $aListaAlunos = [];
     foreach ($_POST['arrayCodigos'] as $chave => $sCodigo) {
 

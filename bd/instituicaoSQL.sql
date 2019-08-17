@@ -36,12 +36,31 @@ CREATE TABLE IF NOT EXISTS TurmaAluno (
 	CONSTRAINT fk_Turma_has_Aluno_Aluno1 FOREIGN KEY (idAluno) REFERENCES Aluno(idAluno)
 );
 
-select * from instituicao;
-select * from aluno;
-select * from turma;
-select * from turmaaluno;
+insert into instituicao values 
+(null, 'IFC'),
+(null, 'UDESC'),
+(null, 'UFSC');
 
--- insert into turma values (null, 'Redes de Computadores'), (null, 'Inteligência Artificial'), (null, 'Deselvolvimento WEB II');
+insert into aluno values
+(null, 111, 'Mathias Schulz', 30.0, 300, '2018-10-10', 10, 20, 50, 1),
+(null, 222, 'Artur Silva', 15.7, 800, '2016-11-11', 15, 46, 99, 1),
+(null, 333, 'João Back', 45.8, 250, '2019-12-15', 6, 6, 6, 1),
+(null, 444, 'Paulo Silva', 46.4, 777, '2015-03-24', 20, 40, 140, 2);
+
+insert into turma values
+(null, 'Desenvolvimento WEB I'),
+(null, 'Redes de Computadores I'),
+(null, 'Inteligência Artificial');
+
+insert into turmaaluno values
+(1, 1), (1, 2), (1, 3), (1, 4),
+(2, 2), (2, 3),
+(3, 1), (3, 2), (3, 3);
+
+-- select * from instituicao;
+-- select * from aluno;
+-- select * from turma;
+-- select * from turmaaluno;
 
 
 -- instituicao por score
