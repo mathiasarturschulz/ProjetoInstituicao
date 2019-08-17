@@ -3,7 +3,9 @@
 class Conexao {
 
     private const DB_TYPE = 'mysql';
-    private const DB_HOST = 'localhost';
+    // private const DB_HOST = 'localhost';
+    // LOCALHOST DOESN'T WORK ON LINUX
+    private const DB_HOST = '127.0.0.1';
     private const DB_NAME = 'instituicao';
     private const DB_USER = 'root';
     private const DB_PASSWORD = '';
