@@ -290,7 +290,7 @@ class TurmaDAO {
             $listaAlunos = [];
             foreach($alunosRs as $aluno){
                 $alunoDAO = new AlunoDAO();
-                $aluno = $alunoDAO->selectAlunoPorId(intval($aluno['idAluno']));
+                $aluno = $alunoDAO->selectAlunoPorId(intval($aluno['idAluno']))[1][0];
                 $listaAlunos[] = $aluno;
             }
 
@@ -299,7 +299,7 @@ class TurmaDAO {
             $result->setNome($turma[0]['nome']);
             $result->setId($turma[0]['idTurma']);
             $result->setListaAlunos($listaAlunos);
-            var_dump($listaAlunos[0][1]);
+
             return [true, $result];
 
         } catch(PDOException $e) {
