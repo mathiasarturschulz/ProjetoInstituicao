@@ -20,3 +20,8 @@ spl_autoload_register(function ($nomeClasse) {
     require_once("graficos".DIRECTORY_SEPARATOR.$nomeClasse.".class.php");
 });
 
+spl_autoload_register(function ($nomeClasse) {
+  if (file_exists("helpers".DIRECTORY_SEPARATOR.$nomeClasse.".php"))
+    require_once("helpers".DIRECTORY_SEPARATOR.$nomeClasse.".php");
+});
+

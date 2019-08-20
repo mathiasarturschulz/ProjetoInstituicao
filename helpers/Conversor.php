@@ -26,11 +26,22 @@ class Conversor{
         $url = self::getURLCompleta($usuarioId);
 
         if(self::isURLValida($url) == 1){
-            $html = file_get_contents(self::URL . $usuarioId);
+            $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n"));
+            $context = stream_context_create($opts);
+            $html = file_get_contents(self::URL . $usuarioId, false, $context);
             return $html;
         }else{
             return false;
         }
+    }
+
+    private static function get_content($URL){
+        $ch = curl_init();
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+          curl_setopt($ch, CURLOPT_URL, $URL);
+          $data = curl_exec($ch);
+          curl_close($ch);
+          return $data;
     }
 
     /**

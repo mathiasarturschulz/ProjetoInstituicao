@@ -1,5 +1,49 @@
 <?php
     require_once "inc/Header.php";
+    require_once "autoload.php";
+?>
+
+
+<?php
+
+    if(isset($_POST['att'])){
+        
+        // pegar todos os codigos dos alunos
+
+        // para cada codigo encontrado, buscar o aluno novamente, montar o objeto aluno e atualizar a tabela de alunos
+        
+        $oAlunoDAO = new AlunoDAO();
+
+        $aResult = $oAlunoDAO->selectAll();
+        $codigos = [];
+        if($aResult[0]){
+            foreach($aResult[1] as $oAluno){
+                $codigos[] = intval($oAluno->getCodigo());
+            }
+        }
+
+        foreach($codigos as $alunoCod){
+            $alunoJson = Conversor::getDadosAlunoJSONComOID($alunoCod);
+            $alunoJson = json_decode($alunoJson, true);
+
+            $al = (new Aluno())
+                    ->setCodigo($alunoJson['codigo'])
+                    ->setNome($alunoJson['nome'])
+                    ->setScore($alunoJson['score'])
+                    ->setPosicao($alunoJson['posicao'])
+                    ->setResolvidos($alunoJson['resolvidos'])
+                    ->setTentados($alunoJson['tentados'])
+                    ->setSubmissoes($alunoJson['submetidos'])
+                ;
+            echo $al->getCodigo() . ' -- ' . $al->getNome(); echo '<br><br>';
+            $oAlunoDAO->updateAtt($al);
+        }
+
+
+
+    }
+
+
 ?>
 
 <br>
@@ -7,6 +51,9 @@
     <h2 class="col-sm-10">&nbspTurmas Cadastradas</h2><br>
     <form action="cadastro.php" method="post" style="margin-top: 30px; margin-bottom: 5px;">
         <button class="btn btn-sm btn-primary"><i class='fa fa-plus-circle'></i> Adicionar</button>
+    </form>
+    <form method="post" style="margin: 30px 5px">
+        <input type="submit" name="att" class="btn btn-sm btn-primary" value="Atualizar">
     </form>
 </div>
 <table class="table table-hover">

@@ -97,6 +97,45 @@ class AlunoDAO {
         }
     }
 
+    public function updateAtt(Aluno $Aluno)
+    {
+        try {
+            $sql = ""
+                . "UPDATE aluno "
+                . "    SET codigo = :codigo, "
+                . "    nome = :nome, "
+                . "    score = :score, "
+                . "    posicao = :posicao, "
+                . "    resolvidos = :resolvidos, "
+                . "    tentados = :tentados, "
+                . "    submissoes = :submissoes, "
+                . "WHERE idAluno = :id; ";
+            $pdo = Conexao::startConnection();
+            $stmt = $pdo->prepare($sql);
+            
+            $stmt->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+            $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+            $stmt->bindParam(':score', $score, PDO::PARAM_STR);
+            $stmt->bindParam(':posicao', $posicao, PDO::PARAM_STR);
+            $stmt->bindParam(':resolvidos', $resolvidos, PDO::PARAM_STR);
+            $stmt->bindParam(':tentados', $tentados, PDO::PARAM_STR);
+            $stmt->bindParam(':submissoes', $submissoes, PDO::PARAM_STR);
+
+            $codigo = $Aluno->getCodigo();
+            $nome = $Aluno->getNome();
+            $score = $Aluno->getScore();
+            $posicao = $Aluno->getPosicao();
+            $resolvidos = $Aluno->getResolvidos();
+            $tentados = $Aluno->getTentados();
+            $submissoes = $Aluno->getSubmissoes();
+
+            $stmt->execute();
+            return [true, "Atualizado com Sucesso"];
+        } catch (PDOException $e) {
+            return [false, 'Error: ' . $e->getMessage()];
+        }
+    }
+
     public function delete($iDAluno)
     {
         try {
@@ -205,7 +244,7 @@ class AlunoDAO {
                     $oInstituicao = "";
                 }
                 $result[] = (new Aluno())
-                    ->setID($linha['id'])
+                    ->setID($linha['idAluno'])
                     ->setCodigo($linha['codigo'])
                     ->setNome($linha['nome'])
                     ->setScore($linha['score'])
