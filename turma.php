@@ -8,10 +8,6 @@
 
     if(isset($_POST['att'])){
         
-        // pegar todos os codigos dos alunos
-
-        // para cada codigo encontrado, buscar o aluno novamente, montar o objeto aluno e atualizar a tabela de alunos
-        
         $oAlunoDAO = new AlunoDAO();
 
         $aResult = $oAlunoDAO->selectAll();
@@ -35,13 +31,9 @@
                     ->setTentados($alunoJson['tentados'])
                     ->setSubmissoes($alunoJson['submetidos'])
                 ;
-            echo $al->getCodigo() . ' -- ' . $al->getNome(); echo '<br><br>';
-            $oAlunoDAO->updateAtt($al);
         }
-
-
-
     }
+    
 
 
 ?>

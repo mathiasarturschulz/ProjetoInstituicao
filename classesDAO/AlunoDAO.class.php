@@ -101,15 +101,15 @@ class AlunoDAO {
     {
         try {
             $sql = ""
-                . "UPDATE aluno "
-                . "    SET codigo = :codigo, "
+                . "UPDATE Aluno "
+                . "    SET "
                 . "    nome = :nome, "
                 . "    score = :score, "
                 . "    posicao = :posicao, "
                 . "    resolvidos = :resolvidos, "
                 . "    tentados = :tentados, "
-                . "    submissoes = :submissoes, "
-                . "WHERE idAluno = :id; ";
+                . "    submissoes = :submissoes "
+                . "WHERE codigo = :codigo; ";
             $pdo = Conexao::startConnection();
             $stmt = $pdo->prepare($sql);
             
