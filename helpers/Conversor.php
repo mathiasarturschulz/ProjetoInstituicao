@@ -67,7 +67,7 @@ class Conversor{
         $html = self::getConteudoHTML($usuarioId);
 
         if($html){
-
+            set_time_limit(0);
             $dom->loadHTML($html);
 
             $divProfileBarEl = $dom->getElementById('profile-bar');
